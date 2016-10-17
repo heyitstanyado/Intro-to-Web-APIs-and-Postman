@@ -13,19 +13,19 @@ using CoffeeMenu.Models;
 
 namespace CoffeeMenu.Controllers
 {
-    public class DrinksController : ApiController
+    public class DrinksV2Controller : ApiController
     {
         private MenuContext db = new MenuContext();
 
-        // GET: api/Drinks
-        [HttpGet]
-        [Route("heygivemedrinks")]
+        // GET: api/DrinksV2
         public IQueryable<Drink> GetDrinks()
         {
-            return db.Drinks;
+            var drinks = db.Drinks.OrderBy(drink => drink.Price);
+
+            return drinks;
         }
 
-        // GET: http://example.com/api/Drinks/5
+        // GET: api/DrinksV2/5
         [ResponseType(typeof(Drink))]
         public IHttpActionResult GetDrink(int id)
         {
@@ -38,7 +38,7 @@ namespace CoffeeMenu.Controllers
             return Ok(drink);
         }
 
-        // PUT: api/Drinks/5
+        // PUT: api/DrinksV2/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutDrink(int id, Drink drink)
         {
@@ -73,7 +73,7 @@ namespace CoffeeMenu.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Drinks
+        // POST: api/DrinksV2
         [ResponseType(typeof(Drink))]
         public IHttpActionResult PostDrink(Drink drink)
         {
@@ -88,7 +88,7 @@ namespace CoffeeMenu.Controllers
             return CreatedAtRoute("DefaultApi", new { id = drink.Id }, drink);
         }
 
-        // DELETE: api/Drinks/5
+        // DELETE: api/DrinksV2/5
         [ResponseType(typeof(Drink))]
         public IHttpActionResult DeleteDrink(int id)
         {

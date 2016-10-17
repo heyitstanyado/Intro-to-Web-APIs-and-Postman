@@ -13,7 +13,7 @@ namespace CoffeeMenu.DAL
             var drinks = new List<Drink>
             {
                 new Drink { Name = "Pumpkin Spice Latte", Price = 4.75, IsSeasonal = true},
-                new Drink { Name = "Black Coffee", Price = 2.50, IsSeasonal = false},
+                new Drink { Name = "Drip Coffee", Price = 2.55, IsSeasonal = false},
                 new Drink { Name = "Cafe Au Lait", Price = 3.25, IsSeasonal = false},
 
             };
